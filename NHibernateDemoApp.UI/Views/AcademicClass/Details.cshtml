@@ -1,0 +1,48 @@
+﻿@model NHibernateDemoApp.Data.Entity.AcademicClass
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Academic Class</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+
+@Html.ActionLink("Add New Student", "AddStudent", new { ClassId=Model.Id })
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.FirstOrDefault().FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Students.FirstOrDefault().LastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Students) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+        </tr>
+    }
+
+</table>
